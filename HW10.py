@@ -15,8 +15,9 @@ class Name(Field):
 
 
 class Phone(Field):
-    def __init__(self, phone):
-        self.value = phone
+    def __init__(self, name, phone=None):
+        self.value = name
+        self.phones = [phone] if phone else []
 
 
 class Record:
