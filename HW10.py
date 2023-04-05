@@ -2,7 +2,7 @@ from collections import UserDict
 
 
 class Field:
-    def __init__(self, value=None):
+    def __init__(self, value):
         self.value = value
 
     def __str__(self):
@@ -10,16 +10,19 @@ class Field:
 
 
 class Name(Field):
-    pass
+    def __init__(self, name):
+        self.value = name
 
 
 class Phone(Field):
-    pass
+    def __init__(self, phone):
+        self.value = phone
 
 
 class Record:
-    def __init__(self, name):
+    def __init__(self, name, phone):
         self.name = name
+        self.phone = phone
         self.phones = []
 
     def add_num(self, phone):
@@ -67,7 +70,7 @@ def add(*args):
     data = args[0].split()
     name = Name(data[0])
     phone = Phone(data[1])
-    rec = Record(name)
+    rec = Record(name, phone)
     rec.add_num(phone)
     phone_book.add_record(rec)
 
